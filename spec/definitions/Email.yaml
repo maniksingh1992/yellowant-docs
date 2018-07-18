@@ -1,5 +1,4 @@
-Email:
-  description: User email address
-  type: string
-  format: email
-  example: john.smith@example.com
+description: User email address
+type: string
+format: email
+example: john.smith@example.com
