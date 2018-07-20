@@ -17,18 +17,18 @@ post:
   summary: Create a Client Manager tag
   description: |
     Create a Client Manager tag
-  parameters:
-    - name: body
-      in: body
-      required: true
-      schema:
-        type: object
-        properties:
-          name:
-            description: New tag name
-            example: onboarding
-            type: string
-            maxLength: 50
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              description: New tag name
+              example: onboarding
+              type: string
+              maxLength: 50
   responses:
     201:
       description: Client Manager tag was created
