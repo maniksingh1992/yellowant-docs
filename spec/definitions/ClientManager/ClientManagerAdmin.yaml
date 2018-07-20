@@ -1,5 +1,5 @@
 type: object
-description: Admininstrator for the Client Manager platform
+description: Admin for the Client Manager platform
 properties:
   email:
     description: Admin email
