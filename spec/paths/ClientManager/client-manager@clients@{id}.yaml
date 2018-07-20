@@ -1,0 +1,47 @@
+parameters:
+  - $ref: "#/parameters/resourceId"
+get:
+  tags:
+    - Client Manager Client
+  summary: Retrieve a Client Manager Client
+  description: |
+    Retrieve a Client Manager client with specified identifier id
+  responses:
+    200:
+      description: Client Manager client was retrieved successfully
+      schema:
+        $ref: "#/definitions/ClientManagerClient"
+put:
+  tags:
+    - Client Manager Client
+  summary: Update a Client Manager client with predefined ID
+  description: |
+    Update a Client Manager client with predefined identifier integer
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            assignee:
+              description: Assignee id
+              example: 123
+              required: false
+              type: integer
+            tags:
+              description: |
+                A list of tags. This list can perform create, update and delete of tags associated with the client.
+              example:
+                - onboarding
+              type: array
+              required: false
+              items:
+                type: string
+                description: Tag name
+                example: onboarding
+  responses:
+    200:
+      description: Client Manager client was updated
+      schema:
+        $ref: "#/definitions/ClientManagerClient"
