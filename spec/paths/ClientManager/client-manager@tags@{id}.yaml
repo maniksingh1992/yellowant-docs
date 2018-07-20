@@ -1,0 +1,40 @@
+parameters:
+  - $ref: "#/parameters/resourceId"
+get:
+  tags:
+    - Client Manager Tag
+  summary: Retrieve a Client Manager Tag
+  description: |
+    Retrieve a Client Manager tag with specified identifier id
+  responses:
+    200:
+      description: Client Manager tag was retrieved successfully
+      schema:
+        $ref: "#/definitions/ClientManagerTag"
+put:
+  tags:
+    - Client Manager Tag
+  summary: Update a Client Manager tag with predefined ID
+  description: |
+    Update a Client Manager tag with predefined identifier integer
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            id:
+              description: Tag id
+              example: 123
+              type: integer
+            name:
+              description: New tag name
+              example: onboarding
+              type: string
+              maxLength: 50
+  responses:
+    200:
+      description: Client Manager tag was updated
+      schema:
+        $ref: "#/definitions/ClientManagerTag"
