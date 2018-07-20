@@ -1,0 +1,36 @@
+get:
+  tags:
+    - Client Manager Tag
+  summary: Retrieve a list of the Client Manager tags
+  description: |
+    Retrieve a list of Client Manager tags
+  responses:
+    200:
+      description: A list of Client Manager tags was retrieved successfully
+      schema:
+        type: array
+        items:
+          $ref: "#/definitions/ClientManagerTag"
+post:
+  tags:
+    - Client Manager Tag
+  summary: Create a Client Manager tag
+  description: |
+    Create a Client Manager tag
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              description: New tag name
+              example: onboarding
+              type: string
+              maxLength: 50
+  responses:
+    201:
+      description: Client Manager tag was created
+      schema:
+        $ref: "#/definitions/ClientManagerTag"
