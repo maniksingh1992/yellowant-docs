@@ -1,0 +1,43 @@
+type: object
+description: Users of the YellowAnt platform
+properties:
+  applications:
+    description: List of the names of the applications used by the client
+    items:
+      description: Application name
+      example: app name
+      readOnly: true
+      type: string
+    readOnly: true
+    type: array
+  assignee:
+    $ref: "#/definitions/ClientManagerAdmin"
+  date_joined:
+    description: Client joining date
+    example: "2017-07-21T17:32:28Z"
+    format: date-time
+    readOnly: true
+    type: string
+  email:
+    description: Client user email
+    example: user@example.com
+    format: email
+    readOnly: true
+    type: string
+  id:
+    description: Client user id
+    example: 123
+    readOnly: true
+    type: integer
+  name:
+    description: Client user name
+    example: John description
+    readOnly: true
+    type: string
+  platform:
+    $ref: "#/definitions/ChatPlatform"
+  tags:
+    description: Tags associated with this client
+    items:
+      $ref: "#/definitions/ClientManagerTag"
+    type: array
