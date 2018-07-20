@@ -57,3 +57,10 @@ securityDefinitions:
   basic_auth: # security definition name (you can name it as you want)
     type: basic
 ################################################################################
+parameters:
+  resourceId:
+    name: id
+    in: path
+    description: The resource identifier integer id
+    type: integer
+    required: true
