@@ -1,0 +1,13 @@
+get:
+  tags:
+    - Client Manager Admin
+  summary: Retrieve a list of the Client Manager admins
+  description: |
+    Retrieve a list of Client Manager admins
+  responses:
+    200:
+      description: A list of Client Manager admins was retrieved successfully
+      schema:
+        type: array
+        items:
+          $ref: "#/definitions/ClientManagerAdmin"
