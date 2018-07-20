@@ -1,0 +1,13 @@
+parameters:
+  - $ref: "#/parameters/resourceId"
+get:
+  tags:
+    - Client Manager Admin
+  summary: Retrieve a Client Manager admin
+  description: |
+    Retrieve a Client Manager admin with specified identifier id
+  responses:
+    200:
+      description: Client Manager admin was retrieved successfully
+      schema:
+        $ref: "#/definitions/ClientManagerAdmin"
