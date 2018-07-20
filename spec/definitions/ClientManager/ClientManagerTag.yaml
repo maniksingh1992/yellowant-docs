@@ -1,0 +1,13 @@
+type: object
+description: A string text which can be associated with any client
+properties:
+  id:
+    description: Tag id
+    example: 123
+    readOnly: true
+    type: integer
+  name:
+    description: Tag name
+    example: onboarding
+    maxLength: 50
+    type: string
