@@ -1,0 +1,29 @@
+type: object
+description: Admininstrator for the Client Manager platform
+properties:
+  email:
+    description: Admin email
+    example: admin@yellowant.com
+    format: email
+    readOnly: true
+    type: string
+  first_name:
+    description: Admin first name
+    example: John
+    readOnly: true
+    type: string
+  id:
+    description: Admin user id
+    example: 123
+    readOnly: true
+    type: integer
+  last_name:
+    description: Admin last name
+    example: Doe
+    readOnly: true
+    type: string
+  username:
+    description: Admin login username
+    example: admin_login
+    readOnly: true
+    type: string
