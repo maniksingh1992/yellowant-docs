@@ -1,0 +1,12 @@
+type: object
+properties:
+  id:
+    description: Chat Platform id
+    example: 1
+    readOnly: true
+    type: integer
+  name:
+    description: Chat Platform name
+    example: slack
+    readOnly: true
+    type: string
