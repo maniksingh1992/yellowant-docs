@@ -40,22 +40,22 @@ x-tagGroups:
       - Client Manager Tag
       - Client Manager Client
 ################################################################################
-securityDefinitions:
-  main_auth: # security definition name (you can name it as you want)
-    type: oauth2 # authorization type, one of: oauth2, basic, apiKey
-    # the following options are specific to oauth2 type
-    authorizationUrl: 'http://example.com/api/oauth/dialog'
-    flow: implicit
-    scopes:
-      'read:users': read users info
-      'write:users': modify or remove users
-  api_key: # security definition name (you can name it as you want)
-    type: apiKey
-    # The following options are specific to apiKey type
-    in: header # Where API key will be passed: header or query
-    name: api_key # API key paramteer name
-  basic_auth: # security definition name (you can name it as you want)
-    type: basic
+# securityDefinitions:
+#   main_auth: # security definition name (you can name it as you want)
+#     type: oauth2 # authorization type, one of: oauth2, basic, apiKey
+#     # the following options are specific to oauth2 type
+#     authorizationUrl: 'http://example.com/api/oauth/dialog'
+#     flow: implicit
+#     scopes:
+#       'read:users': read users info
+#       'write:users': modify or remove users
+#   api_key: # security definition name (you can name it as you want)
+#     type: apiKey
+#     # The following options are specific to apiKey type
+#     in: header # Where API key will be passed: header or query
+#     name: api_key # API key paramteer name
+#   basic_auth: # security definition name (you can name it as you want)
+#     type: basic
 ################################################################################
 parameters:
   resourceId:
