@@ -1,0 +1,315 @@
+swagger: '2.0'
+info:
+  description: |
+    This is a documentation for YellowAnt developers to consume the API and endpoints of YellowAnt Main.
+  version: 1.0.0
+  title: YellowAnt Developer Docs
+  termsOfService: 'https://yellowant.com/common/terms/'
+  contact:
+    email: vishwa@yellowant.com
+    url: 'https://yellowant.com/#section-self-hosted'
+  x-logo:
+    url: logo.png
+schemes:
+  - https
+host: yellowant.com
+basePath: /api
+produces:
+  - application/json
+consumes:
+  - application/json
+tags:
+  - name: Client Manager Admin
+    description: Get client manager admin details
+  - name: Client Manager Tag
+    description: Manage tags in the client manager
+  - name: Client Manager Client
+    description: Manage clients in the client manager
+  - name: Echo
+    description: Example echo operations
+  - name: User
+    description: Operations about user
+x-tagGroups:
+  - name: Client Manager
+    tags:
+      - Client Manager Admin
+      - Client Manager Tag
+      - Client Manager Client
+parameters:
+  resourceId:
+    name: id
+    in: path
+    description: The resource identifier integer id
+    type: integer
+    required: true
+paths:
+  /client-manager/admins:
+    get:
+      tags:
+        - Client Manager Admin
+      summary: Retrieve a list of the Client Manager admins
+      description: |
+        Retrieve a list of Client Manager admins
+      responses:
+        '200':
+          description: A list of Client Manager admins was retrieved successfully
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ClientManagerAdmin'
+  '/client-manager/admins/{id}':
+    parameters:
+      - $ref: '#/parameters/resourceId'
+    get:
+      tags:
+        - Client Manager Admin
+      summary: Retrieve a Client Manager admin
+      description: |
+        Retrieve a Client Manager admin with specified identifier id
+      responses:
+        '200':
+          description: Client Manager admin was retrieved successfully
+          schema:
+            $ref: '#/definitions/ClientManagerAdmin'
+  /client-manager/clients:
+    get:
+      tags:
+        - Client Manager Client
+      summary: Retrieve a list of the Client Manager clients
+      description: |
+        Retrieve a list of Client Manager clients
+      responses:
+        '200':
+          description: A list of Client Manager clients was retrieved successfully
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ClientManagerClient'
+  '/client-manager/clients/{id}':
+    parameters:
+      - $ref: '#/parameters/resourceId'
+    get:
+      tags:
+        - Client Manager Client
+      summary: Retrieve a Client Manager Client
+      description: |
+        Retrieve a Client Manager client with specified identifier id
+      responses:
+        '200':
+          description: Client Manager client was retrieved successfully
+          schema:
+            $ref: '#/definitions/ClientManagerClient'
+    put:
+      tags:
+        - Client Manager Client
+      summary: Update a Client Manager client with predefined ID
+      description: |
+        Update a Client Manager client with predefined identifier integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                assignee:
+                  description: Assignee id
+                  example: 123
+                  required: false
+                  type: integer
+                tags:
+                  description: |
+                    A list of tags. This list can perform create, update and delete of tags associated with the client.
+                  example:
+                    - onboarding
+                  type: array
+                  required: false
+                  items:
+                    type: string
+                    description: Tag name
+                    example: onboarding
+      responses:
+        '200':
+          description: Client Manager client was updated
+          schema:
+            $ref: '#/definitions/ClientManagerClient'
+  /client-manager/tags:
+    get:
+      tags:
+        - Client Manager Tag
+      summary: Retrieve a list of the Client Manager tags
+      description: |
+        Retrieve a list of Client Manager tags
+      responses:
+        '200':
+          description: A list of Client Manager tags was retrieved successfully
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ClientManagerTag'
+    post:
+      tags:
+        - Client Manager Tag
+      summary: Create a Client Manager tag
+      description: |
+        Create a Client Manager tag
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: New tag name
+                  example: onboarding
+                  type: string
+                  maxLength: 50
+      responses:
+        '201':
+          description: Client Manager tag was created
+          schema:
+            $ref: '#/definitions/ClientManagerTag'
+  '/client-manager/tags/{id}':
+    parameters:
+      - $ref: '#/parameters/resourceId'
+    get:
+      tags:
+        - Client Manager Tag
+      summary: Retrieve a Client Manager Tag
+      description: |
+        Retrieve a Client Manager tag with specified identifier id
+      responses:
+        '200':
+          description: Client Manager tag was retrieved successfully
+          schema:
+            $ref: '#/definitions/ClientManagerTag'
+    put:
+      tags:
+        - Client Manager Tag
+      summary: Update a Client Manager tag with predefined ID
+      description: |
+        Update a Client Manager tag with predefined identifier integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  description: Tag id
+                  example: 123
+                  type: integer
+                name:
+                  description: New tag name
+                  example: onboarding
+                  type: string
+                  maxLength: 50
+      responses:
+        '200':
+          description: Client Manager tag was updated
+          schema:
+            $ref: '#/definitions/ClientManagerTag'
+definitions:
+  ChatPlatform:
+    type: object
+    properties:
+      id:
+        description: Chat Platform id
+        example: 1
+        readOnly: true
+        type: integer
+      name:
+        description: Chat Platform name
+        example: slack
+        readOnly: true
+        type: string
+  ClientManagerAdmin:
+    type: object
+    description: Admin for the Client Manager platform
+    properties:
+      email:
+        description: Admin email
+        example: admin@yellowant.com
+        format: email
+        readOnly: true
+        type: string
+      first_name:
+        description: Admin first name
+        example: John
+        readOnly: true
+        type: string
+      id:
+        description: Admin user id
+        example: 123
+        readOnly: true
+        type: integer
+      last_name:
+        description: Admin last name
+        example: Doe
+        readOnly: true
+        type: string
+      username:
+        description: Admin login username
+        example: admin_login
+        readOnly: true
+        type: string
+  ClientManagerClient:
+    type: object
+    description: Users of the YellowAnt platform
+    properties:
+      applications:
+        description: List of the names of the applications used by the client
+        items:
+          description: Application name
+          example: app name
+          readOnly: true
+          type: string
+        readOnly: true
+        type: array
+      assignee:
+        $ref: '#/definitions/ClientManagerAdmin'
+      date_joined:
+        description: Client joining date
+        example: '2017-07-21T17:32:28Z'
+        format: date-time
+        readOnly: true
+        type: string
+      email:
+        description: Client user email
+        example: user@example.com
+        format: email
+        readOnly: true
+        type: string
+      id:
+        description: Client user id
+        example: 123
+        readOnly: true
+        type: integer
+      name:
+        description: Client user name
+        example: John description
+        readOnly: true
+        type: string
+      platform:
+        $ref: '#/definitions/ChatPlatform'
+      tags:
+        description: Tags associated with this client
+        items:
+          $ref: '#/definitions/ClientManagerTag'
+        type: array
+  ClientManagerTag:
+    type: object
+    description: A string text which can be associated with any client
+    properties:
+      id:
+        description: Tag id
+        example: 123
+        readOnly: true
+        type: integer
+      name:
+        description: Tag name
+        example: onboarding
+        maxLength: 50
+        type: string

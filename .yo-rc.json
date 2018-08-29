@@ -1,0 +1,10 @@
+{
+  "generator-openapi-repo": {
+    "importExistingSpec": false,
+    "name": "YellowAnt API",
+    "repo": "maniksingh1992/yellowant-docs",
+    "splitSpec": true,
+    "samples": true,
+    "installSwaggerUI": true
+  }
+}
